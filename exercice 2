@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .interface-containor {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-to-do {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .lists{
+            display: flex;
+            justify-content: space-around;
+        }
+        .lists h3{
+            margin-right:100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="interface-containor">
+        <div>
+            <h1>corona interface</h1>
+        </div>
+        <div>
+            <form id="form">
+                <div class="input-to-do">
+                    <div><input type="text"></div>
+                    <div><input type="submit" value="add"></div>
+                </div>
+            </form>
+        </div>
+        <div class="lists">
+            <div>
+                <h3>Saved</h3>
+                <ul id="savedlist"></ul>
+            </div>
+            <div>
+                <h3>vaccinated</h3>
+                <ul id="vaccinatedlist"></ul>
+            </div>
+        </div>
+
+    </div>
+
+    <script >
+    const form=document.querySelector("#form")
+const input=document.querySelector("input")
+const addlist=document.querySelector("#savedlist")
+const vaccinelist=document.querySelector("#vaccinatedlist")
+form.onsubmit = (e)=> {
+    e.preventDefault();
+    Ajout();
+}
+const Ajout=(e)=>{
+    
+    const li = document.createElement("li")
+    li.innerText=`esm : ${input.value}`
+    const cocheBTN = document.createElement("button")
+    cocheBTN.innerText="X"
+    li.append(cocheBTN)
+    addlist.append(li)
+    cocheBTN.addEventListener("click",vaccine)
+    input.value=""
+    
+   
+}
+
+const vaccine=(e)=>{ 
+    let element=e.target.parentNode
+    vaccinelist.appendChild (element)
+    let va=element.querySelector("button")
+    va.style.backgroundColor="red"
+    va.addEventListener("click",supprimer)
+   
+    }
+    
+
+const supprimer=(e)=>{
+    
+    e.target.parentNode.remove();
+   
+}</script>
+</body>
+
+</html>
