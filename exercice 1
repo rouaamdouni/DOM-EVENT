@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ajoutlist{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="ajoutlist">
+        <div><h1>List App</h1></div>
+        <div>
+            <input type="text " id="inputToDo">
+            <button>Ajouter <span></span> à la liste</button>
+        </div>
+
+        <div><ul></ul></div>
+    </div>
+    <script >console.log("bonjour")
+const inputToDo = document.querySelector("input");
+const addbutton = document.querySelector("button");
+const personlist = document.querySelector("ul")
+const parag = document.querySelector('span')
+addbutton.onclick = (e) => {
+    HandleAjout();
+    Hundlechange();
+
+}
+inputToDo.onkeydown = (e) => {
+    if (e.key == "Enter") {
+        HandleAjout();
+        Hundlechange();
+    }
+}
+inputToDo.addEventListener('keyup',MyFunction)
+const HandleAjout = (e) => {
+    if (!inputToDo.value.length) {
+        alert("please provide input name")
+    }
+   
+    const li = document.createElement("li")
+    li.innerText = inputToDo.value
+    personlist.appendChild(li);
+    inputToDo.value = ""
+    
+    
+
+}
+    
+    function MyFunction() {
+    
+        parag.innerText = inputToDo.value.toUpperCase();
+        parag.style.fontWeight="bold"
+        
+  }
+  const Hundlechange=()=>{
+    parag.value=""
+
+  }</script>
+</body>
+</html>
+
+
