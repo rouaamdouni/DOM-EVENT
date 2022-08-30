@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="interface-containor">
+     <div><h1>interface admin</h1></div>
+     <div>
+        <form id="form">
+        <input type="file" accept=".png, .jpg, .jpeg" value=""  >
+        <input type="text">
+        <input type="submit" value="post">
+        <p><img id="output" width="200" height="50" display="none" /></p>
+    </form>
+     </div>
+     <div>
+        <h3>liste des etudiants</h3>
+        <ul></ul>
+     </div>
+    </div>
+    <script >const studentlist=document.querySelector("ul")
+const form=document.querySelector("#form")
+const file=document.querySelector("input[type='file']")
+const input=document.querySelector("input[type='text']")
+form.onsubmit=(e)=>{
+    e.preventDefault()
+    AjoutPost()
+}
+const AjoutPost =(e)=>{
+    
+if((!input.value.length)||(!file.value.length)){
+    alert("please provide your inputs")
+}
+const li=document.createElement('li')
+const title = `Title : ${input.value}`
+const suppBtn=document.createElement('button')
+suppBtn.innerText="delete"
+const image = document.querySelector('#output');
+console.log(file.value)
+image.style.display="block"
+	image.src = file.url;
+    
+li.append(suppBtn)
+li.append(title)
+li.append(image)
+studentlist.append(li)
+input.value=""
+file.value=""
+suppBtn.addEventListener("click",supprimer)
+
+
+}
+const supprimer=(e)=>{
+    
+    e.target.parentNode.remove();
+   
+}</script>
+</body>
+</html>
